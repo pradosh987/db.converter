@@ -145,6 +145,16 @@ public class DatabaseConverter {
         this.sourceParam5 = sourceParam5;
     }
 
+    public File getSourceFile() {
+        return sourceFile;
+    }
+
+    public void setSourceFile(File sourceFile) {
+        this.sourceFile = sourceFile;
+    }
+    
+    
+    
     public void setDestinationParam1(String destinationParam1) {
         this.destinationParam1 = destinationParam1;
     }
