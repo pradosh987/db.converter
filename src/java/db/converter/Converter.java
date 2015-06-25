@@ -5,6 +5,13 @@
  */
 package db.converter;
 
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author AION
@@ -25,9 +32,20 @@ public class Converter {
         try
         {
             //retrice params
-            String filePath=data.getSource();
+            File inputFile=data.getSourceFile();
             
+            String inputFileLocation = "E:\\ArkAngel\\csv\\file.csv";
             
+            Connection con = Database.getInstance().getExcelConnection(inputFileLocation);
+            
+            DatabaseMetaData inputFileMetaData=con.getMetaData();
+            
+            ResultSet inputTables= inputFileMetaData.getTables(null, null, null, null);
+            
+            List<String> tables = new ArrayList<>();
+            
+            while(inputTables.next())
+                tables.add(inputTables.getString(3));
             
             
             
