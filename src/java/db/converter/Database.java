@@ -52,7 +52,15 @@ public class Database {
         }
     }
     
-    public Connection getOracleConnection() throws Exception{
-         throw new Exception("Method not implemented");
+    public Connection getOracleConnection(String server,int port, String databaseName, String username, String password) throws Exception{
+        try{
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        String test = "jdbc:oracle:thin:@"+server+":"+port+":"+databaseName;
+
+	return DriverManager.getConnection("jdbc:oracle:thin:@"+server+":"+port+":"+databaseName,username,password);
+        }catch (Exception ex) {
+            System.err.println(ex);
+            throw new Exception("Error generating Oracle Connection object");
+        }
     }
 }

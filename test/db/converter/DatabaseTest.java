@@ -55,9 +55,11 @@ public class DatabaseTest {
         catch(Exception ex){
             expResult = false;
         }
-        assertEquals(expResult, true);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        if(expResult){
+            System.err.println("Excel Pass");
+        }
+        else
+            fail("test fail");
     }
 
     /**
@@ -74,7 +76,7 @@ public class DatabaseTest {
             expResult =false;
         }
         if(expResult){
-            System.err.println("Pass");
+            System.err.println("MySQL Pass");
         }
         else
             fail("test fail");
@@ -85,15 +87,22 @@ public class DatabaseTest {
     /**
      * Test of getOracleConnection method, of class Database.
      */
-//    @Test
-//    public void testGetOracleConnection() throws Exception {
-//        System.out.println("getOracleConnection");
-//        Database instance = null;
-//        Connection expResult = null;
-//        Connection result = instance.getOracleConnection();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//    
+    @Test
+    public void testGetOracleConnection() throws Exception {
+        System.out.println("getOracleConnection");
+        Database instance = Database.getInstance();
+        boolean expResult = true;
+        try{
+        Connection result = instance.getOracleConnection("localhost",8081,"XE","pro","pro");
+        }catch(Exception ex){
+            expResult =false;
+        }
+        if(expResult){
+            System.err.println("Oracle Pass");
+        }
+        else
+            fail("test fail");
+    }
+    
+    
 }
