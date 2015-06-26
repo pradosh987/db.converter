@@ -31,6 +31,10 @@ public class DatabaseConverter {
     private String sourceParam5;
 
     private File sourceFile;
+    
+    private String sourceFileContentType;
+    
+    private String sourceFileFileName;
 
     private String destinationParam1;
 
@@ -45,15 +49,28 @@ public class DatabaseConverter {
     public String execute() {
         //validate and select conversion logic here
         try {
-            if (getSource().equals("Excel") && getDestination().equals("MySQL")) {
+            if(getSource().equals("MySQL"))
+            {
+                if(getDestination().equals("CSV")){
+                    MySQLConverter.toCSV(this);
+                }
+                else if(getDestination().equals("Oracle")){
+                
+                }
+                else if(getDestination().equals("Excel")){
+                
+                }
+            }
+            
+             if (getSource().equals("CSV") && getDestination().equals("MySQL")) {
+                 CSVConverter.toMySQL(this);
+            } else if (getSource().equals("Excel") && getDestination().equals("MySQL")) {
                 Converter.getInstance().excelToMySQL(this);
             } else if (getSource().equals("MySQL") && getDestination().equals("Excel")) {
                 Converter.getInstance().mysqlToExcel(this);
             } else if (getSource().equals("Oracle") && getDestination().equals("MySQL")) {
                 Converter.getInstance().oracleToMySQL(this);
-            } else if (getSource().equals("MySQL") && getDestination().equals("Oracle")) {
-                Converter.getInstance().mysqlToExcel(this);
-            }
+            } 
 
             return "success";
         } catch (Exception ex) {
@@ -87,6 +104,22 @@ public class DatabaseConverter {
 
     public String getSourceParam4() {
         return sourceParam4;
+    }
+
+    public void setSourceFileContentType(String sourceFileContentType) {
+        this.sourceFileContentType = sourceFileContentType;
+    }
+
+    public void setSourceFileFileName(String sourceFileFileName) {
+        this.sourceFileFileName = sourceFileFileName;
+    }
+
+    public String getSourceFileContentType() {
+        return sourceFileContentType;
+    }
+
+    public String getSourceFileFileName() {
+        return sourceFileFileName;
     }
 
     public String getSourceParam5() {

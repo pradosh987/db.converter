@@ -58,6 +58,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      Source: \n");
       out.write("      <select name=\"source\">\n");
       out.write("          <option value=\"CSV\">CSV</option>\n");
+      out.write("          <option value=\"Excel\">Excel</option>\n");
       out.write("          <option value=\"MySQL\">MySQL</option>\n");
       out.write("      </select>\n");
       out.write("      <br/><br/>\n");
@@ -70,10 +71,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      Source Parameter 4: <input type=\"text\" name=\"sourceParam4\" />\n");
       out.write("      <br/>\n");
       out.write("      Source Parameter 5: <input type=\"text\" name=\"sourceParam5\" />\n");
+      out.write("      <br />\n");
+      out.write("      Source File:\n");
+      out.write("      <input type=\"file\" name=\"sourceFile\" />\n");
       out.write("      </br><br/><br/>\n");
       out.write("      Destination:\n");
       out.write("      <select name=\"destination\">\n");
       out.write("          <option value=\"CSV\">CSV</option>\n");
+      out.write("          <option value=\"Excel\">Excel</option>\n");
       out.write("          <option value=\"MySQL\">MySQL</option>\n");
       out.write("      </select>\n");
       out.write("      <br/><br/>\n");

@@ -14,10 +14,11 @@
 </head>
 <body>
    <h1>Hello World From Struts2</h1>
-   <form action="database_converter">
+   <form method="post" action="database_converter">
       <label for="name">Database Converter</label><br/><br/>
       Source: 
       <select name="source">
+          <option value="CSV">CSV</option>
           <option value="Excel">Excel</option>
           <option value="MySQL">MySQL</option>
       </select>
@@ -33,10 +34,11 @@
       Source Parameter 5: <input type="text" name="sourceParam5" />
       <br />
       Source File:
-      <input type="file" name="sourceFile" />
+      <input type="file"  name="sourceFile" />
       </br><br/><br/>
       Destination:
       <select name="destination">
+          <option value="CSV">CSV</option>
           <option value="Excel">Excel</option>
           <option value="MySQL">MySQL</option>
       </select>
